@@ -37,7 +37,7 @@ class Home extends React.Component {
       })
   }
   navigate() {
-    this.props.navigation.navigate('Route1')
+    this.props.navigation.navigate('Screen1')
   }
   animate() {
     Animated.timing(
@@ -63,10 +63,11 @@ class Home extends React.Component {
       <View style={styles.container}>
         <View style={styles.homeContainer}>
           <Text style={styles.welcome}>Welcome</Text>
-          <Animated.Image
-            source={require('../assets/boomboxcropped.png')}
-            style={{ tintColor: colors.primary, width: width / 2, height: width / 2, transform: [{scale: this.AnimatedScale}]}}
-            resizeMode='contain'
+          <Button
+          title="Go to next page"
+          onPress={() =>
+            this.navigate()
+          }
           />
           <Text onPress={this.logout.bind(this)} style={styles.welcome}>Logout</Text>
         </View>
