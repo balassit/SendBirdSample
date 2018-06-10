@@ -17,9 +17,6 @@ import { colors, fonts } from '../theme'
 const { width, height } = Dimensions.get('window')
 
 class Home extends React.Component {
-  static navigationOptions = {
-    header: null
-  }
   state = {
     username: ''
   }
@@ -37,7 +34,7 @@ class Home extends React.Component {
       })
   }
   navigate() {
-    this.props.navigation.navigate('Screen1')
+    this.props.navigation
   }
   animate() {
     Animated.timing(
@@ -62,19 +59,25 @@ class Home extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.homeContainer}>
+          <Text onPress={() => this.navigate('DrawerOpen')}>Open</Text>
           <Text style={styles.welcome}>Welcome</Text>
-          <Button
-          title="Go to next page"
-          onPress={() =>
-            this.navigate()
-          }
-          />
           <Text onPress={this.logout.bind(this)} style={styles.welcome}>Logout</Text>
         </View>
       </View>
     )
   }
 }
+
+Home.navigationOptions = {
+  title: "Home",
+  drawer: {
+      icon: () => (
+        <Image
+          source={require('../assets/shape.png')}
+          style={[styles.tabIcon, {tintColor: 'black'}]}
+        />
+  )}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -100,6 +103,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 20,
     textAlign: 'center'
+  },
+  tabIcon: {
+    width: 16,
+    height: 16,
   }
 })
 

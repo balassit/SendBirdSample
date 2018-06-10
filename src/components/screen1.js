@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, DrawerNavigator } from "react-navigation";
 import { connect } from "react-redux";
 
 import {
@@ -15,10 +15,6 @@ import { colors, fonts } from '../theme'
 
 import { incrementAction, decrementAction } from "../actions/actionCreator";
 class Screen1View extends Component {
-  static navigationOptions = {
-    title: "Screen1"
-  };
-
   navigate() {
     this.props.navigation.navigate('Screen2')
   }
@@ -26,47 +22,70 @@ class Screen1View extends Component {
   render() {
     const { counterCount, incrementAction, decrementAction } = this.props;
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "yellowgreen",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <View style={styles.container}>
         <Text>{counterCount}</Text>
         <View style={{ height: 100, flexDirection: "row" }}>
           <TouchableOpacity
             onPress={() => incrementAction()}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+            style={styles.touchableOpacity}
           >
             <Text
-              style={{ textDecorationLine: "underline", fontWeight: "600" }}
+              style={styles.welcome}
             >
               INCREMENT
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => decrementAction()}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+            style={styles.touchableOpacity}
           >
             <Text
-              style={{ textDecorationLine: "underline", fontWeight: "600" }}
+              style={styles.welcome}
             >
               DECREMENT
             </Text>
           </TouchableOpacity>
         </View>
-        <Button
-          title="Go to next page"
-          onPress={() =>
-            this.navigate()
-          }
-          />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  },
+  homeContainer: {
+    alignItems: 'center'
+  },
+  welcome: {
+    fontFamily: fonts.light,
+    color: 'rgba(0, 0, 0, .85)',
+    marginBottom: 26,
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  registration: {
+    fontFamily: fonts.base,
+    color: 'rgba(0, 0, 0, .5)',
+    marginTop: 20,
+    fontSize: 16,
+    paddingHorizontal: 20,
+    textAlign: 'center'
+  },
+  tabIcon: {
+    width: 16,
+    height: 16,
+  },
+  touchableOpacity: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+})
 
 const mapStateToProps = state => ({
   counterCount: state.CounterReducer.counter
