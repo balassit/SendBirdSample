@@ -16,6 +16,9 @@ import { logOut } from '../actions'
 import { colors, fonts } from '../theme'
 const { width, height } = Dimensions.get('window')
 
+import { Container }  from "native-base";
+import MapContainer from "../components/MapContainer";
+
 class Home extends React.Component {
   static navigationOptions = {
     header: null
@@ -25,6 +28,7 @@ class Home extends React.Component {
   }
   AnimatedScale = new Animated.Value(1)
   componentDidMount() {
+    this.props.getCurrentLocation();
     this.animate()
   }
   logout() {
@@ -59,15 +63,18 @@ class Home extends React.Component {
     })
   }
   render() {
+    const region = {
+      latitude:3.146642,
+      longitude:101.695845,
+      latitudeDelta:0.0922,
+      longitudeDelta:0.0421
+    }
     return (
       <View style={styles.container}>
         <View style={styles.homeContainer}>
-          <Text style={styles.welcome}>Welcome</Text>
-          <Animated.Image
-            source={require('../assets/boomboxcropped.png')}
-            style={{ tintColor: colors.primary, width: width / 2, height: width / 2, transform: [{scale: this.AnimatedScale}]}}
-            resizeMode='contain'
-          />
+            {this.props.region.latitude &&
+            <MapContainer region={this.props.region}/>
+            }
           <Text onPress={this.logout.bind(this)} style={styles.welcome}>Logout</Text>
         </View>
       </View>
