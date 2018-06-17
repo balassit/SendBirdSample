@@ -6,14 +6,15 @@ import {
   Image,
   Button,
   Animated,
-  Dimensions
+  Dimensions,
+  StatusBar
 } from 'react-native'
 
 import { connect } from 'react-redux'
 import { Auth } from 'aws-amplify'
 
 import { logOut } from '../actions'
-import { colors, fonts } from '../theme'
+import { colors, fonts, container, welcome, tabIcon, touchableOpacity} from '../theme'
 const { width, height } = Dimensions.get('window')
 
 class Home extends React.Component {
@@ -33,8 +34,8 @@ class Home extends React.Component {
         console.log('err: ', err)
       })
   }
-  navigate() {
-    this.props.navigation
+  navigate(page) {
+    this.props.navigation.navigate(page)
   }
   animate() {
     Animated.timing(
@@ -57,58 +58,14 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.homeContainer}>
-          <Text onPress={() => this.navigate('DrawerOpen')}>Open</Text>
-          <Text style={styles.welcome}>Welcome</Text>
-          <Text onPress={this.logout.bind(this)} style={styles.welcome}>Logout</Text>
-        </View>
+      <View style={container}>
+        <StatusBar barStyle = "dark-content" hidden = {false}/>
+        <Text style={welcome}>Welcome</Text>
+        <Text onPress={this.logout.bind(this)} style={welcome}>Logout</Text>
       </View>
     )
   }
 }
-
-Home.navigationOptions = {
-  title: "Home",
-  drawer: {
-      icon: () => (
-        <Image
-          source={require('../assets/shape.png')}
-          style={[styles.tabIcon, {tintColor: 'black'}]}
-        />
-  )}
-};
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1
-  },
-  homeContainer: {
-    alignItems: 'center'
-  },
-  welcome: {
-    fontFamily: fonts.light,
-    color: 'rgba(0, 0, 0, .85)',
-    marginBottom: 26,
-    fontSize: 22,
-    textAlign: 'center'
-  },
-  registration: {
-    fontFamily: fonts.base,
-    color: 'rgba(0, 0, 0, .5)',
-    marginTop: 20,
-    fontSize: 16,
-    paddingHorizontal: 20,
-    textAlign: 'center'
-  },
-  tabIcon: {
-    width: 16,
-    height: 16,
-  }
-})
 
 const mapStateToProps = state => ({
   auth: state.auth
