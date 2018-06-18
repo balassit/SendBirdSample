@@ -23,6 +23,8 @@ class ProfileView extends Component {
       <View style={container}>
         <StatusBar barStyle = "dark-content" hidden = {false}/>
         <Button onPress={() => this.navigate('Account')} title="Edit Account" />
+        <Button onPress={() => this.navigate('Laundry')} title="Your Laundry" />
+        <Button onPress={() => this.navigate('Payment')} title="Payment" />
       </View>
     );
   }

@@ -6,7 +6,7 @@ import { colors, fonts } from '../theme'
 import Home from './Home'
 import Screen1 from '../components/screen1'
 import Screen2 from '../components/screen2'
-import stackNav from './StackNav';
+import profileNav from './ProfileNav';
 
 const styles = StyleSheet.create({
   icon: {
@@ -26,8 +26,8 @@ const routes = {
         />
       )}
   },
-  stackNav: {
-    screen: stackNav,
+  profileNav: {
+    screen: profileNav,
     navigationOptions: {
       tabBarLabel:"Profile",
       tabBarIcon: ({ tintColor }) => (

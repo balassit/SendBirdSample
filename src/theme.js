@@ -35,6 +35,7 @@ const touchableOpacity = {
   justifyContent: "center",
   alignItems: "center"
 }
+
 const input = {
   borderColor: 'black',
   borderWidth: 1,
@@ -46,6 +47,44 @@ const label = {
 
 }
 
+const modal = {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+const inputContainer = {
+  marginTop: 20
+}
+
+const greeting = {
+  marginTop: 20,
+  fontFamily: fonts.light,
+  fontSize: 24
+}
+const greeting2 = {
+  fontFamily: fonts.light,
+  color: '#666',
+  fontSize: 24,
+  marginTop: 5
+}
+
+const heading = {
+  flexDirection: 'row'
+}
+
+const headingImage = {
+  width: 38,
+  height: 38
+}
+
+const errorMessage = {
+  fontFamily: fonts.base,
+  fontSize: 12,
+  marginTop: 10,
+  color: 'transparent'
+}
+
 export {
   colors,
   fonts,
@@ -54,5 +93,5 @@ export {
   tabIcon,
   touchableOpacity,
   input,
-  label
+  inputContainer
 }

@@ -25,7 +25,7 @@ const initialState = {
   phone_number: ''
 }
 
-class AccountView extends Component {
+class LaundryView extends Component {
   state = initialState
 
   onChangeText = (key, value) => {
@@ -80,6 +80,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
 };
 
-const Account = connect(mapStateToProps, mapDispatchToProps)(AccountView);
+const Laundry = connect(mapStateToProps, mapDispatchToProps)(LaundryView);
 
-export default Account;
+export default Laundry;

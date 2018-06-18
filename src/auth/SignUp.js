@@ -14,8 +14,9 @@ import {
 import { Auth } from 'aws-amplify'
 import { connect } from 'react-redux'
 
-import { fonts, colors } from '../theme'
 import { createUser, confirmUserSignUp } from '../actions'
+
+import { colors, fonts, container, welcome, tabIcon, touchableOpacity} from '../theme'
 
 import Input from '../components/Input'
 import Button from '../components/Button'

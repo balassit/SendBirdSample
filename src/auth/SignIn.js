@@ -20,12 +20,14 @@ import { fonts, colors } from '../theme'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
+const initialState = {
+  username: '',
+  password: '',
+  accessCode: ''
+}
+
 class SignIn extends Component<{}> {
-  state = {
-    username: '',
-    password: '',
-    accessCode: ''
-  }
+  state = initialState
   
   onChangeText = (key, value) => {
     this.setState({
